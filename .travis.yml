@@ -3,17 +3,20 @@ language: php
 php:
  - '7.0'
 
-before_install:
-  # Deep clone instead of shallow
-  - |
-    CLONE_URL=$(git remote get-url origin)
-    cd $HOME
-    rm -rf $TRAVIS_BUILD_DIR
-    git clone $CLONE_URL $TRAVIS_REPO_SLUG
-    cd $TRAVIS_REPO_SLUG
-    git checkout -qf $TRAVIS_COMMIT
+# before_install:
+#   # Deep clone instead of shallow
+#   - |
+#     CLONE_URL=$(git remote get-url origin)
+#     cd $HOME
+#     rm -rf $TRAVIS_BUILD_DIR
+#     git clone $CLONE_URL $TRAVIS_REPO_SLUG
+#     cd $TRAVIS_REPO_SLUG
+#     git checkout -qf $TRAVIS_COMMIT
 
 install:
+ - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+ - cd $TRAVIS_REPO_SLUG
+ - git checkout -qf $TRAVIS_COMMIT
  - composer install
 
 script:
