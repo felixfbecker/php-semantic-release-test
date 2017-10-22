@@ -11,6 +11,7 @@ script:
 
 after_success:
  - bash <(curl -s https://codecov.io/bash)
+ - git fetch --unshallow
  - git fetch --tags
  - git show-ref --tags
  - nvm install 8 && nvm use 8
