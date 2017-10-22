@@ -3,15 +3,6 @@ language: php
 php:
  - '7.0'
 
-# before_install:
-#   # Deep clone instead of shallow
-#   - |
-#     CLONE_URL=$(git remote get-url origin)
-#     cd $HOME
-#     rm -rf $TRAVIS_BUILD_DIR
-#     git clone $CLONE_URL $TRAVIS_REPO_SLUG
-#     cd $TRAVIS_REPO_SLUG
-#     git checkout -qf $TRAVIS_COMMIT
 
 install:
  - composer install
@@ -22,10 +13,6 @@ script:
 after_success:
  - bash <(curl -s https://codecov.io/bash)
  - |
-   git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
-   cd $TRAVIS_REPO_SLUG
-   git checkout -qf $TRAVIS_COMMIT
-   git show-ref --tags
    nvm install 8 && nvm use 8
    npm install
    npm run semantic-release
