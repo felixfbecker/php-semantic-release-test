@@ -16,5 +16,6 @@ class Argument
     public function __construct(string $aProperty = null)
     {
         $this->aProperty = $aProperty;
+        echo 'hello world';
     }
 }
