@@ -3,7 +3,6 @@ language: php
 php:
  - '7.0'
 
-
 install:
  - composer install
 
@@ -12,10 +11,11 @@ script:
 
 after_success:
  - bash <(curl -s https://codecov.io/bash)
- - |
-   nvm install 8 && nvm use 8
-   npm install
-   npm run semantic-release
+ - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+ - git fetch --tags
+ - nvm install 8 && nvm use 8
+ - npm install
+ - npm run semantic-release
 
 branches:
   except:
